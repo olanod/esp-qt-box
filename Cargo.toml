@@ -1,0 +1,27 @@
+[package]
+name = "esp-qt-box"
+version = "0.1.0"
+authors = ["Daniel Olano <me@olanod.com>"]
+edition = "2018"
+resolver = "2"
+
+[profile.release]
+opt-level = "s"
+
+[profile.dev]
+debug = true # Symbols are nice and they don't increase the size on Flash
+opt-level = "z"
+
+[features]
+pio = ["esp-idf-sys/pio"]
+
+[dependencies]
+anyhow = "1"
+embedded-hal = "=1.0.0-alpha.8"
+esp-idf-hal = { git = "https://github.com/esp-rs/esp-idf-hal.git", branch = "master" }
+esp-idf-sys = { version = "0.31.6", features = ["binstart"] }
+
+
+[build-dependencies]
+embuild = "0.29"
+anyhow = "1"
